@@ -20,6 +20,7 @@ interface IAsset {
         address _factory,
         string memory _name, 
         string memory _symbol,
+        string memory _did,
         string memory _tokenURI,
         string memory _license
     ) external returns(bool);
@@ -31,4 +32,7 @@ interface IAsset {
     function getMintedNfts() external view returns(address[] memory);
     function getCreatorMintedNfts(address _owner) external view returns(address[] memory);
     function getAssetContract() external view returns(address);
+
+    function getLicense() external view returns(string memory);
+    function getDid() external view returns(string memory);
 }

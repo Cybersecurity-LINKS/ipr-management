@@ -17,6 +17,7 @@ contract Asset is Initializable, ERC721Upgradeable, ERC721URIStorageUpgradeable 
     
     address private factory;
     string private license;
+    string private did; 
 
     event NFTminted(
         address owner,
@@ -51,7 +52,8 @@ contract Asset is Initializable, ERC721Upgradeable, ERC721URIStorageUpgradeable 
         address _factory,
         string memory _name, 
         string memory _symbol,
-        string memory _tokenURI,
+        string memory _proofId, // temporarily used as token URI content
+        string memory _did,
         string memory _license
     ) external initializer returns(bool) {
         require(owner != address(0), "Invalid NFT owner: zero address not valid!");
@@ -63,9 +65,10 @@ contract Asset is Initializable, ERC721Upgradeable, ERC721URIStorageUpgradeable 
         require(msg.sender == _factory, "Not the Factory address!");
 
         _safeMint(owner, 1);
-        _setTokenURI(1, _tokenURI);
+        _setTokenURI(1, _proofId);
         license = _license;
-
+        did = _did;
+        
         emit NFTminted(owner, _name, _symbol, factory);
         return true;
     }
@@ -74,8 +77,12 @@ contract Asset is Initializable, ERC721Upgradeable, ERC721URIStorageUpgradeable 
         return ownerOf(1);
     }
 
-    function getAssetDownloadURL() external view returns(string memory) {
+    function getLicense() external view returns(string memory) {
         return license;
+    }
+
+    function getDid() external view returns(string memory) {
+        return did;
     }
 
     // The following functions are overrides required by Solidity.

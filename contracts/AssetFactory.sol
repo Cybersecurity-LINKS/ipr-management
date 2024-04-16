@@ -5,7 +5,6 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Create2.sol";
 import "@openzeppelin/contracts/proxy/Clones.sol";
 
 import "../interfaces/IAsset.sol";
@@ -25,7 +24,8 @@ contract AssetFactory is Ownable {
     struct AssetData {
         string name;
         string symbol;
-        string descriptionUri;
+        string proofId;
+        string did;
         string license; // as SPDX
     }
 
@@ -36,7 +36,7 @@ contract AssetFactory is Ownable {
         address owner,
         string name,
         string symbol,
-        string descriptionUri
+        string proofId
     );
 
     constructor (address _assetContract) Ownable(msg.sender) {
@@ -61,12 +61,13 @@ contract AssetFactory is Ownable {
             address(this),
             _assetData.name,
             _assetData.symbol,
-            _assetData.descriptionUri,
+            _assetData.proofId,
+            _assetData.did,
             _assetData.license
         ) == true, "Factory: Could not initialize New NFT contract");
         require(asset.balanceOf(msg.sender) == 1, "NFT not minted");
         
-        emit NftMinted(instanceAddr, assetContract, msg.sender, _assetData.name, _assetData.symbol, _assetData.descriptionUri);
+        emit NftMinted(instanceAddr, assetContract, msg.sender, _assetData.name, _assetData.symbol, _assetData.proofId);
 
     }
 
