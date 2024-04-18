@@ -26,16 +26,6 @@ contract Asset is Initializable, ERC721Upgradeable, ERC721URIStorageUpgradeable 
         address factory
     );  
 
-    event TokenCreated(
-        string name,
-        string symbol,
-        address owner,
-        address erc721address_, 
-        address newERC20Address,
-        uint256 maxSupply_,
-        uint256 initialSupply_
-    );
-
     modifier onlyAssetOwner() {
         require(msg.sender == ownerOf(1), "Not the asset (NFT) owner!");
         _;
