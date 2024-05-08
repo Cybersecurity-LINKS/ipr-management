@@ -26,6 +26,7 @@ contract AssetFactory is Ownable {
         string symbol;
         string proofId;
         string did;
+        string assetId;
         string license; // as SPDX
     }
 
@@ -63,6 +64,7 @@ contract AssetFactory is Ownable {
             _assetData.symbol,
             _assetData.proofId,
             _assetData.did,
+            _assetData.assetId,
             _assetData.license
         ) == true, "Factory: Could not initialize New NFT contract");
         require(asset.balanceOf(msg.sender) == 1, "NFT not minted");

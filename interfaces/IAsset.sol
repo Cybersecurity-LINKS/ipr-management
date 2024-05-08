@@ -20,13 +20,13 @@ interface IAsset {
         address _factory,
         string memory _name, 
         string memory _symbol,
+        string memory _proofId,
         string memory _did,
-        string memory _tokenURI,
+        string memory _assetId,
         string memory _license
     ) external returns(bool);
-
-
-   function balanceOf(address caller) external view returns(uint256);
+    
+    function balanceOf(address caller) external view returns(uint256);
 
     function getCount() external view returns(uint256);
     function getMintedNfts() external view returns(address[] memory);
