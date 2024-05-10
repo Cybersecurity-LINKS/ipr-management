@@ -1,23 +1,53 @@
 # IPR Management Smart Contracts
 
-For local development:
+This repository contains the smart contracts to tokenize and represent *data assets* as NFT on the DLT.  In detail, [**AssetFactory**](./contracts/AssetFactory.sol) is a factory contract that deploys instances of the [**Asset**](./contracts/Asset.sol) contract. Asset is an ERC-721 contract. When the tokenize function is invoked, the AssetFactory contract deploys a new Asset contract. Each Asset instance inherits the same properties and functionality defined in the Asset contract, but with unique values specific to each NFT. 
+  
 
-```shell
+## Getting started  
+
+### Requirements  
+
+- `node` and `npm` 
+
+### Installation  
+
+Clone the repository and install the required packages:  
+```sh
 npm install
-npx hardhat node
-npx hardhat --network localhost run scripts/deploy.js  
+``` 
 
-npx hardhat --network localhost faucet 0x6d3fbD514D62E2D305e4435dDe99483f20f264BF
+## Run
+
+### Locally
+
+Launch the Hardhat Network,a local Ethereum network node designed for development. More information [here](https://hardhat.org/).
+```shell
+npx hardhat node
 ```
 
-<!-- This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
-
-Try running some of the following tasks:
+In a different terminal in the same directory, run:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-``` -->
+npx hardhat --network localhost faucet <address>
+npx hardhat --network localhost run scripts/deploy.js
+```
+
+### External networks
+
+#### Testnet shimmer-evm 
+Before proceeding, make sure the address linked to your `PRIVATE_KEY` in the `.env` file has sufficient funds for transactions. If not, you can request testnet SMR tokens from the ShimmerEVM Faucet: https://evm-toolkit.evm.testnet.shimmer.network/.
+
+```shell
+npx hardhat --network shimmerevm-testnet run scripts/deploy.js  
+```
+
+(To view transactions on the explorer: https://explorer.evm.testnet.shimmer.network/)
+
+## Usage  
+
+More information [here](https://github.com/MODERATE-Project/trust-service) to use and interact with the smart contract
+
+
+## Licensing  
+
+[Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)

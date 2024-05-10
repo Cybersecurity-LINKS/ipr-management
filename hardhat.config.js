@@ -36,9 +36,7 @@ module.exports = {
   networks: {
     'shimmerevm-testnet': {
       url: 'https://json-rpc.evm.testnet.shimmer.network',
-      chainId: 1072,
-      gas: 2100000, 
-      gasPrice: 8000000000,
+      chainId: 1073,
       accounts: [process.env.PRIVATE_KEY],
     }
   }
