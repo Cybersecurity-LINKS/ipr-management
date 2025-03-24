@@ -34,9 +34,9 @@ module.exports = {
     },
   },
   networks: {
-    'shimmerevm-testnet': {
-      url: 'https://json-rpc.evm.testnet.shimmer.network',
-      chainId: 1073,
+    'iota-evm-testnet': {
+      url: 'https://json-rpc.evm.testnet.iotaledger.net',
+      chainId: 1075,
       accounts: [process.env.PRIVATE_KEY],
     }
   }

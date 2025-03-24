@@ -34,14 +34,14 @@ npx hardhat --network localhost run scripts/deploy.js
 
 ### External networks
 
-#### Testnet shimmer-evm 
-Before proceeding, make sure the address linked to your `PRIVATE_KEY` in the `.env` file has sufficient funds for transactions. If not, you can request testnet SMR tokens from the ShimmerEVM Faucet: https://evm-toolkit.evm.testnet.shimmer.network/.
+#### Testnet iota-evm 
+Before proceeding, make sure the address linked to your `PRIVATE_KEY` in the `.env` file has sufficient funds for transactions. If not, you can request testnet SMR tokens from the IOTA EVM Faucet: https://evm-toolkit.evm.testnet.iotaledger.net.
 
 ```shell
-npx hardhat --network shimmerevm-testnet run scripts/deploy.js  
+npx hardhat --network iota-evm-testnet run scripts/deploy.js  
 ```
 
-(To view transactions on the explorer: https://explorer.evm.testnet.shimmer.network/)
+(To view transactions on the explorer: https://explorer.evm.testnet.iotaledger.net)
 
 ## Usage  
 
